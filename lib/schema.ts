@@ -21,7 +21,6 @@ export const users = pgTable('users', {
   stripeCustomerId: text('stripe_customer_id'),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
-  stripeCustomerId: text('stripe_customer_id'),
 }, (table) => ({
   emailIdx: uniqueIndex('users_email_idx').on(table.email),
 }));
