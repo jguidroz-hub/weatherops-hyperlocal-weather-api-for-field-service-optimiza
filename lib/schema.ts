@@ -18,6 +18,7 @@ export const users = pgTable('users', {
   emailVerified: timestamp('email_verified'),
   image: text('image'),
   hashedPassword: text('hashed_password'),
+  stripeCustomerId: text('stripe_customer_id'),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 }, (table) => ({
