@@ -55,7 +55,7 @@ export async function createCheckoutSession(params: {
   const sessionParams: Stripe.Checkout.SessionCreateParams = {
     customer: customerId,
     mode: 'subscription',
-    line_items: [{ price: params.stripePriceId, quantity: 1 }],
+    line_items: [{ price: params.priceId, quantity: 1 }],
     success_url: params.successUrl,
     cancel_url: params.cancelUrl,
     metadata: { userId: params.userId },
