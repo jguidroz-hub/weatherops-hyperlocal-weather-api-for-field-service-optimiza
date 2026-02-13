@@ -23,3 +23,26 @@ export const auditLog = pgTable('audit_log', {
   ipAddress: text('ip_address'),
   createdAt: timestamp('created_at').notNull().default(now()),
 });
+
+// Geospatial locations tracked for weather monitoring
+export const locations = pgTable('locations', {
+  id: text('id').primaryKey(),
+  userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
+  name: text('name').notNull(),
+  latitude: text('latitude').notNull(),
+  longitude: text('longitude').notNull(),
+  radiusKm: text('radius_km').default(5),
+  createdAt: timestamp('created_at').notNull(),
+  updatedAt: timestamp('updated_at').notNull(),
+});
+
+// 15-minute precipitation predictions for tracked locations
+export const weatherForecasts = pgTable('weather_forecasts', {
+  id: text('id').primaryKey(),
+  locationId: text('location_id').references(() => locations.id, { onDelete: 'cascade' }),
+  forecastTime: timestamp('forecast_time').notNull(),
+  precipitationProbability: text('precipitation_probability').notNull(),
+  precipitationIntensity: text('precipitation_intensity').notNull(),
+  createdAt: timestamp('created_at').notNull(),
+  updatedAt: timestamp('updated_at').notNull(),
+});
