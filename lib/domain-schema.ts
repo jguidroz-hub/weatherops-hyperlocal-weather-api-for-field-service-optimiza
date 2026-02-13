@@ -32,7 +32,7 @@ export const locations = pgTable('locations', {
   name: text('name').notNull(),
   latitude: text('latitude').notNull(),
   longitude: text('longitude').notNull(),
-  radiusKm: text('radius_km').default(5),
+  radiusKm: text('radius_km').default('5'),
   createdAt: timestamp('created_at').notNull(),
   updatedAt: timestamp('updated_at').notNull(),
 });
