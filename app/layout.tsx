@@ -7,11 +7,11 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'WeatherOps - Hyperlocal weather API for field service optimization',
-  description: 'WeatherOps - Hyperlocal weather API for field service optimization — built to work',
+  description: `WeatherOps - Hyperlocal weather API for field service optimization — built to work',
 };
 
 export const viewport = {
-  width: 'device-width',
+  width: 'device-width`,
   initialScale: 1,
 };
 

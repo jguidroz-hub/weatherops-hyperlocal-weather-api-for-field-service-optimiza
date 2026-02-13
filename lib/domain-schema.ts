@@ -1,3 +1,4 @@
+import { sql } from 'drizzle-orm';
 import { pgTable, text, timestamp, boolean, integer, jsonb, index } from 'drizzle-orm/pg-core';
 import { users } from './schema';
 
@@ -8,8 +9,8 @@ export const userSettings = pgTable('user_settings', {
   timezone: text('timezone').default('UTC'),
   emailNotifications: boolean('email_notifications').default(true),
   weeklyDigest: boolean('weekly_digest').default(true),
-  createdAt: timestamp('created_at').notNull().default(now()),
-  updatedAt: timestamp('updated_at').notNull().default(now()),
+  createdAt: timestamp('created_at').notNull().default(sql`now()`),
+  updatedAt: timestamp('updated_at').notNull().default(sql`now()`),
 });
 
 // Tracks important state changes for debugging and compliance
@@ -21,7 +22,7 @@ export const auditLog = pgTable('audit_log', {
   entityId: text('entity_id'),
   metadata: jsonb('metadata'),
   ipAddress: text('ip_address'),
-  createdAt: timestamp('created_at').notNull().default(now()),
+  createdAt: timestamp('created_at').notNull().default(sql`now()`),
 });
 
 // Geospatial locations tracked for weather monitoring
